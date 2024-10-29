@@ -1,4 +1,4 @@
-version: "3.1"
+
 
 services:
   web:
@@ -7,7 +7,7 @@ services:
     build:
       context: "./docker/php"
     ports:
-      - "${IP}:${PORT_WEB}:80"
+      - "${IP}:8081:80"
     volumes:
       - "./root:/var/www/root"
       - "./root/vendor:/var/www/root/vendor:delegated"
@@ -26,7 +26,7 @@ services:
     hostname: ${DB_HOST_NAME}
     image: mysql:8.0.31
     ports:
-      - "${IP}:${PORT_DB}:3306"
+      - "${IP}:3307:3306"
     volumes:
         - "mysql_data_volume:/var/lib/mysql" # volumes -> mysql_data_volume
         - "./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf"
